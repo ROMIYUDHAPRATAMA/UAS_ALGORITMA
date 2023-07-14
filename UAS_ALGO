@@ -1,10 +1,12 @@
+package uas;
+
 import java.util.ArrayList;
 
-class Product {
+class product {
     private String name;
     private int price;
 
-    public Product(String name, int price) {
+    public product(String name, int price) {
         this.name = name;
         this.price = price;
     }
@@ -19,18 +21,18 @@ class Product {
 }
 
 class Inventory {
-    private ArrayList<Product> products;
+    private ArrayList<product> products;
 
     public Inventory() {
         products = new ArrayList<>();
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(product product) {
         products.add(product);
     }
 
     public void displayInventory() {
-        for (Product product : products) {
+        for (uas.product product : products) {
             System.out.println("Nama Barang: " + product.getName() + ", Harga: " + product.getPrice());
         }
     }
@@ -47,16 +49,16 @@ class Inventory {
                 }
             }
 
-            Product temp = products.get(minIndex);
+            product temp = products.get(minIndex);
             products.set(minIndex, products.get(i));
             products.set(i, temp);
         }
     }
 
     public void searchByName(String searchQuery) {
-        ArrayList<Product> searchResults = new ArrayList<>();
+        ArrayList<product> searchResults = new ArrayList<>();
 
-        for (Product product : products) {
+        for (uas.product product : products) {
             if (product.getName().equalsIgnoreCase(searchQuery)) {
                 searchResults.add(product);
             }
@@ -66,23 +68,23 @@ class Inventory {
             System.out.println("Barang tidak ditemukan.");
         } else {
             System.out.println("Hasil pencarian untuk '" + searchQuery + "':");
-            for (Product product : searchResults) {
+            for (uas.product product : searchResults) {
                 System.out.println("Nama Barang: " + product.getName() + ", Harga: " + product.getPrice());
             }
         }
     }
-}
 
-public class TokoPedia {
+
+
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
 
         // Menambahkan data barang ke inventory
-        inventory.addProduct(new Product("Buku Tulis", 5000));
-        inventory.addProduct(new Product("Pensil", 2000));
-        inventory.addProduct(new Product("Penghapus", 1000));
-        inventory.addProduct(new Product("Buku Gambar", 7000));
-        inventory.addProduct(new Product("Pulpen", 3000));
+        inventory.addProduct(new product("Buku Tulis", 5000));
+        inventory.addProduct(new product("Pensil", 2000));
+        inventory.addProduct(new product("Penghapus", 1000));
+        inventory.addProduct(new product("Buku Gambar", 7000));
+        inventory.addProduct(new product("Pulpen", 3000));
 
         System.out.println("Inventory sebelum diurutkan:");
         inventory.displayInventory();
